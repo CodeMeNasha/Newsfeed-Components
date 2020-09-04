@@ -112,3 +112,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function articleCreator (articleData) { 
+  // if I used 5 seperate arguments how would this look?  
+  
+  const article = document.createElement("div");
+  const twoHead = document.createElement("h2");
+  const date = document.createElement("p");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const expandButton = document.createElement("span");
+ 
+  
+  twoHead.textContent = articleData.title;
+  date.textContent = articleData.date;
+  p1.textContent = articleData.firstParagraph;
+  p2.textContent = articleData.secondParagraph;
+  p3.textContent = articleData.thirdParagraph;
+  expandButton.textContent = "button";
+  
+ 
+
+  article.classList.add("article");
+  date.classList.add("date");
+  // twoDate.classList.add("date");
+  // threeDate.classList.add("date");
+  expandButton.classList.add("expandButton");
+ 
+
+  expandButton.addEventListener("click", () =>{
+    article.classList.toggle("article-open")
+  })
+ 
+  //append article children to article
+  article.append(twoHead, date, p1, p2, p3, expandButton);
+
+  return article;
+};
+
+const articles = document.querySelector(".articles");
+    data.forEach( element => {
+      const finishedArticle = articleCreator(element);
+      articles.append(finishedArticle);
+    })
